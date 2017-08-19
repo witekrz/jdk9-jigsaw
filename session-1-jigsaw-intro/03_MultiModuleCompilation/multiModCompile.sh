@@ -4,7 +4,7 @@ set -eu
 
 source ../../common-functions.sh
 
-DESTINATION_FOLDER="mods"
+DESTINATION_FOLDER="/home/witek/workspace/jdk9-jigsaw/session-1-jigsaw-intro/03_MultiModuleCompilation"
 
 echo ""
 echo "${info} *** Displaying the contents (source files) of the 'src' folder *** ${normal}"
@@ -13,7 +13,7 @@ runTree src
 echo ""
 echo "${info} *** Compiling both modules into the '$DESTINATION_FOLDER' folder *** ${normal}"
 javac -d $DESTINATION_FOLDER \
-      [parameter to point to the folder with source files in a module] src $(find . -name "*.java")
+      --module-source-path  src $(find . -name "*.java")
 
 #
 # * look for tool references, quick started guides, and other documentation in the Java 9 Resource (https://github.com/AdoptOpenJDK/jdk9-jigsaw/blob/master/Java-9-Resources.md).
