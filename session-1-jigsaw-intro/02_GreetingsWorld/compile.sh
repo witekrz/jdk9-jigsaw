@@ -4,8 +4,8 @@ set -eu
 
 source ../../common-functions.sh
 
-COM_GREETINGS_FOLDER="mods/com.greetings"
-ORG_ASTRO_FOLDER="mods/org.astro"
+COM_GREETINGS_FOLDER="/home/witek/workspace/jdk9-jigsaw/session-1-jigsaw-intro/02_GreetingsWorld/org.grettings"
+ORG_ASTRO_FOLDER="/home/witek/workspace/jdk9-jigsaw/session-1-jigsaw-intro/02_GreetingsWorld/org.astro"
 
 echo ""
 echo "${info} *** Displaying the contents (source files) of the 'src' folder *** ${normal}"
@@ -14,7 +14,7 @@ runTree src
 echo ""
 echo "${info} *** Compiling module in folder $ORG_ASTRO_FOLDER *** ${normal}"
 javac -d $ORG_ASTRO_FOLDER \
-      [java source files (with path) in the module*]
+      src/org.astro/module-info.java src/org.astro/org/astro/World.java
 
 echo ""
 echo "${info} *** Displaying the contents (modules) of the '$ORG_ASTRO_FOLDER' folder *** ${normal}"
@@ -22,9 +22,9 @@ runTree "$ORG_ASTRO_FOLDER"
 
 echo ""
 echo "${info} *** Compiling module in folder '$COM_GREETINGS_FOLDER' and linking it with module '$ORG_ASTRO_FOLDER' *** ${normal}"
-javac --module-path mods \
+javac --module-path /home/witek/workspace/jdk9-jigsaw/session-1-jigsaw-intro/02_GreetingsWorld \
       -d $COM_GREETINGS_FOLDER \
-      [java source files (with path) in the module*]
+      src/com.greetings/module-info.java src/com.greetings/com/greetings/Main.java
 
 #
 # * check in the respective module folder for names of the source files, hint: should it also contain file with module information?
