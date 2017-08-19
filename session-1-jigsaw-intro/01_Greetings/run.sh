@@ -13,8 +13,7 @@ echo
 # ...
 #
 
-java --module-path mods \
-     [reference to the compiled class*]
+java --module-path mods -m com.greetings/com.greetings.Main
 
 #
 # * parameter can be either long or short form, with module name and fully qualified class name
