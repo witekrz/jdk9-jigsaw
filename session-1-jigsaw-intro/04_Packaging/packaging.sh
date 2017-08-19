@@ -11,16 +11,16 @@ mkdir -p mlib              # this must be created in order for the jar commands 
 echo ""
 echo "${info} *** Creating module org.astro as a package file (jar) *** ${normal}"
 jar --create \
-    [parameter to specify file, in the mlib folder, specify module name, with @1.0 and .jar extension*] \
-	[parameter to specify module, set it to version 1.0] \
-	-C mods/org.astro .
+   --file=mlib/org.astro@1.0.jar \
+           --module-version=1.0 \
+	-C /home/witek/workspace/jdk9-jigsaw/session-1-jigsaw-intro/04_Packaging/org.astro .
 
 echo ""
 echo "${info} *** Creating module com.greetings as a package file (jar) *** ${normal}"
 jar --create \
     --file mlib/com.greetings.jar \
-	[parameter to specify the main class, and name the fully qualified main class] \
-	-C mods/com.greetings .
+	 --main-class=com.greetings.Main \
+	-C /home/witek/workspace/jdk9-jigsaw/session-1-jigsaw-intro/04_Packaging/com.greetings .
 
 echo ""
 echo "${info} *** Displaying the contents (package files created) of the 'mlib' folder *** ${normal}"
@@ -28,26 +28,26 @@ runTree mlib
 
 echo ""
 echo "${info} *** Printing module description for org.astro as recorded in the module-info.class file in the package (jar) *** ${normal}"
-jar [verbose mode] \
-    [module description param] \
+jar --verbose \
+    --describe-module \
     --file=mlib/org.astro@1.0.jar
 
     echo ""
 echo "${info} *** Displaying contents of the module package org.astro@1.0 *** ${normal}"
-jar [verbose mode] \
-    [list contents of jar param] \
+jar --verbose \
+    --list  \
     --file=mlib/org.astro@1.0.jar
 
 echo ""
 echo "${info} *** Printing module description for com.greetings as recorded in the module-info.class file in the package (jar) *** ${normal}"
-jar [verbose mode] \
-    [module description param] \
+jar --verbose \
+    --describe-module \
     --file=mlib/com.greetings.jar
 
     echo ""
 echo "${info} *** Displaying contents of the module package com.greetings *** ${normal}"
-jar [verbose mode] \
-    [list contents of jar param] \
+jar --verbose \
+    --list \
     --file=mlib/com.greetings.jar
 
 # Run 'jar --help' and 'jar --help-extra' to learn about all the above parameters used to create package files (jar) and also read their descriptions
