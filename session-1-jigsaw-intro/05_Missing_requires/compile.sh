@@ -4,8 +4,8 @@ set -eu
 
 source ../../common-functions.sh
 
-COM_GREETINGS_FOLDER="mods/com.greetings"
-ORG_ASTRO_FOLDER="mods/org.astro"
+COM_GREETINGS_FOLDER="/home/witek/workspace/jdk9-jigsaw/session-1-jigsaw-intro/05_Missing_requires/com.greetings"
+ORG_ASTRO_FOLDER="/home/witek/workspace/jdk9-jigsaw/session-1-jigsaw-intro/05_Missing_requires/org.astro"
 
 echo ""
 echo "${info} *** Compiling modules in $ORG_ASTRO_FOLDER *** ${normal}"
@@ -19,7 +19,7 @@ runTree "$ORG_ASTRO_FOLDER"
 
 echo ""
 echo "${info} *** Compiling modules in $COM_GREETINGS_FOLDER (with 'requires' commented out) *** ${normal}"
-javac --module-path mods \
+javac --module-path /home/witek/workspace/jdk9-jigsaw/session-1-jigsaw-intro/05_Missing_requires \
        -d $COM_GREETINGS_FOLDER \
        src/com.greetings/module-info.java \
        src/com.greetings/com/greetings/Main.java
